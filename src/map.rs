@@ -26,7 +26,6 @@ impl Map {
             for x in camera.left_x .. camera.right_x {
                 if self.in_bounds(Point::new(x, y)) {
                     let idx = map_idx(x, y);
-                    println!("{:#?}",self.tiles[idx]);
 
                     match self.tiles[idx] {
                         TileType::Floor => {

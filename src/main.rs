@@ -3,7 +3,9 @@ mod map_builder;
 mod camera;
 mod components;
 mod spawner;
+mod systems;
 mod prelude {
+    pub use crate::systems::*;
     pub use bracket_lib::prelude::*;
     pub const SCREEN_WIDTH: i32 = 80;
     pub const SCREEN_HEIGHT: i32 = 50;
@@ -52,7 +54,11 @@ impl GameState for State {
         // self.map.render(ctx,  &self.camera);
         // self.player.render(ctx, &self.camera);
         // TODO: Execute Systems
+        self.resources.insert(ctx.key); // ctx.key holds the keyboard state
+        // doing the above makes current keyboard state avail to any sys that requests it
+        self.systems.execute(&mut self.ecs, &mut self.resources);
         // TODO: Render Draw Buffer
+        render_draw_buffer(ctx).expect("Render error") // function comes from bracket-lib
     }
 }
 fn main() -> BError {

@@ -5,6 +5,7 @@ mod player_input;
 mod entity_render;
 mod collisions;
 mod random_move;
+mod end_turn;
 
 pub fn build_scheduler() -> Schedule {
     Schedule::builder()

@@ -11,3 +11,6 @@ pub struct Player; // empty struct, serves as a 'tag'
 
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Enemy;
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct MovingRandomly;
